@@ -1,5 +1,5 @@
 #!/bin/sh
-# place it in .git/hooks
+# place this file in .git/hooks
 
 echo "analyzing"
 

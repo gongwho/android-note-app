@@ -11,6 +11,6 @@ max_line_length = 120
 tab_width = 2
 
 # ktlint custom rules
-[*.{kt,kts}]
+[*.{kt, kts}]
 # noinspection EditorConfigKeyCorrectness
 disabled_rules = import-ordering

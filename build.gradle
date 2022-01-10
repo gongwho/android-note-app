@@ -23,3 +23,20 @@ buildscript {
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
+
+task copyGitHooks(type: Copy) {
+  from("$rootDir/config/git/hooks/") {
+    include '**/*'
+    rename '(.*)', '$1'
+  }
+  into "$rootDir/.git/hooks"
+}
+
+// config 에 있는 git hook 적용
+task installGitHooks(type: Exec) {
+  group 'git hooks'
+  workingDir rootDir
+  commandLine 'chmod'
+  args '-R', '+x', '.git/hooks/'
+  dependsOn copyGitHooks
+}

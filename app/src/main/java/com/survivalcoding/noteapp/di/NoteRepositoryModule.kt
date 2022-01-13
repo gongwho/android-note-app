@@ -1,7 +1,7 @@
 package com.survivalcoding.noteapp.di
 
 import com.survivalcoding.noteapp.data.datasource.NoteDataSource
-import com.survivalcoding.noteapp.data.di.NoteDataSourceModule.RoomDataSource
+import com.survivalcoding.noteapp.data.di.NoteDataSourceModule.MockDataSource
 import com.survivalcoding.noteapp.data.repository.NoteRepositoryImpl
 import com.survivalcoding.noteapp.domain.repository.NoteRepository
 import dagger.Module
@@ -15,5 +15,5 @@ import javax.inject.Singleton
 object NoteRepositoryModule {
   @Singleton
   @Provides
-  fun provideNoteRepository(@RoomDataSource dataSource: NoteDataSource): NoteRepository = NoteRepositoryImpl(dataSource)
+  fun provideNoteRepository(@MockDataSource dataSource: NoteDataSource): NoteRepository = NoteRepositoryImpl(dataSource)
 }

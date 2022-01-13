@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.survivalcoding.noteapp.databinding.FragmentNoteListBinding
 import com.survivalcoding.noteapp.presentation.note.list.adapter.NoteListAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +39,8 @@ class NoteListFragment : Fragment() {
     }
 
     binding.addNoteButton.setOnClickListener {
-      // TODO: 2022/01/13 nav to edit fragment
+      val action = NoteListFragmentDirections.actionEditNote()
+      it.findNavController().navigate(action)
     }
   }
 

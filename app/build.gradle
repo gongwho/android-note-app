@@ -11,6 +11,12 @@ plugins {
 
   // hilt-android
   id 'dagger.hilt.android.plugin'
+
+  // navigation
+  id 'androidx.navigation.safeargs'
+
+  // parcelize
+  id 'kotlin-parcelize'
 }
 
 android {
@@ -123,7 +129,9 @@ dependencies {
   // Jetpack Compose Integration
   implementation "androidx.navigation:navigation-compose:2.4.0-rc01"
 
+  def android_hilt_version = "2.38.1"
+
   // android-hilt
-  implementation "com.google.dagger:hilt-android:2.38.1"
-  kapt "com.google.dagger:hilt-compiler:2.38.1"
+  implementation "com.google.dagger:hilt-android:$android_hilt_version"
+  kapt "com.google.dagger:hilt-compiler:$android_hilt_version"
 }

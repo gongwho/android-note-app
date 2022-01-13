@@ -8,7 +8,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class NoteRepositoryImpl @Inject constructor(private val noteDataSource: NoteDataSource) : NoteRepository {
+class NoteRepositoryImpl @Inject constructor(private val noteDataSource: NoteDataSource) :
+  NoteRepository {
 
   override fun getNotes(): Flow<List<NoteItem>> = noteDataSource.getNotes()
 

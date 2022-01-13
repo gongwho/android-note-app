@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.survivalcoding.noteapp.databinding.FragmentNoteListBinding
 import com.survivalcoding.noteapp.presentation.note.list.adapter.NoteListAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,7 +15,7 @@ class NoteListFragment : Fragment() {
   private var _binding: FragmentNoteListBinding? = null
   private val binding get() = _binding!!
 
-  private val viewModel by activityViewModels<NoteListViewModel>()
+  private val viewModel by viewModels<NoteListViewModel>()
 
   override fun onCreateView(
     inflater: LayoutInflater,

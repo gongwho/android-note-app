@@ -6,7 +6,7 @@ import java.util.Date
 
 @Entity(tableName = "notes")
 data class NoteItem(
-  @PrimaryKey val id: Int? = null,
+  @PrimaryKey(autoGenerate = true) val id: Int? = null,
   val title: String,
   val content: String,
   val timestamp: Long = Date().time,

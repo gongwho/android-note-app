@@ -1,4 +1,4 @@
-package com.survivalcoding.noteapp.data.datasource
+package com.survivalcoding.noteapp.data.datasource.database
 
 import androidx.room.Dao
 import androidx.room.Delete

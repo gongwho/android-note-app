@@ -4,7 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.survivalcoding.noteapp.data.datasource.NoteDatabase
+import com.survivalcoding.noteapp.data.datasource.database.NoteDatabase
+import com.survivalcoding.noteapp.data.datasource.NoteRoomDataSource
 import com.survivalcoding.noteapp.domain.model.NoteItem
 import com.survivalcoding.noteapp.domain.repository.NoteRepository
 import kotlinx.coroutines.runBlocking
@@ -27,7 +28,11 @@ class NoteRepositoryImplTest {
     ).build()
 
     val dao = db.noteDao()
-    repository = NoteRepositoryImpl(dao)
+
+    // val dataSource = NoteMockDataSource()
+    val dataSource = NoteRoomDataSource(dao)
+
+    repository = NoteRepositoryImpl(dataSource)
   }
 
   @After

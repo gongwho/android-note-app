@@ -1,7 +1,11 @@
 package com.survivalcoding.noteapp.data.datasource
 
 import com.survivalcoding.noteapp.domain.model.NoteItem
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
+import javax.inject.Singleton
 
+@Singleton
 class NoteMockDataSource : NoteDataSource {
   private val _notes = (1..30).map {
     NoteItem(
@@ -12,7 +16,7 @@ class NoteMockDataSource : NoteDataSource {
     )
   }.toMutableList()
 
-  override fun getNotes(): List<NoteItem> = _notes
+  override fun getNotes(): Flow<List<NoteItem>> = flowOf(_notes)
 
   override suspend fun getNoteById(id: Int): NoteItem? = _notes.first { it.id == id }
 

@@ -6,11 +6,12 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.survivalcoding.noteapp.domain.model.NoteItem
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
   @Query("SELECT * FROM notes")
-  fun getAll(): List<NoteItem>
+  fun getAll(): Flow<List<NoteItem>>
 
   @Query("SELECT * FROM notes WHERE id=:id LIMIT 1")
   fun getById(id: Int): NoteItem?

@@ -2,9 +2,12 @@ package com.survivalcoding.noteapp.data.datasource
 
 import com.survivalcoding.noteapp.data.datasource.database.NoteDao
 import com.survivalcoding.noteapp.domain.model.NoteItem
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Singleton
 
+@Singleton
 class NoteRoomDataSource(private val noteDao: NoteDao) : NoteDataSource {
-  override fun getNotes(): List<NoteItem> = noteDao.getAll()
+  override fun getNotes(): Flow<List<NoteItem>> = noteDao.getAll()
 
   override suspend fun getNoteById(id: Int): NoteItem? = noteDao.getById(id)
 

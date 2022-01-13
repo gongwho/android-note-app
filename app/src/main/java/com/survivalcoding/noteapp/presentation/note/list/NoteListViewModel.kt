@@ -1,20 +1,22 @@
 package com.survivalcoding.noteapp.presentation.note.list
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.survivalcoding.noteapp.domain.model.NoteItem
 import com.survivalcoding.noteapp.domain.usecase.DeleteNoteUseCase
 import com.survivalcoding.noteapp.domain.usecase.GetAllNotesUseCase
 import com.survivalcoding.noteapp.domain.usecase.UpsertNoteUseCase
-import kotlinx.coroutines.flow.MutableStateFlow
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class NoteListViewModel(
+@HiltViewModel
+class NoteListViewModel @Inject constructor(
   private val getAllNotesUseCase: GetAllNotesUseCase,
   private val deleteNoteUseCase: DeleteNoteUseCase,
   private val upsertNoteUseCase: UpsertNoteUseCase
 ) : ViewModel() {
-  private val notes by lazy { MutableStateFlow(getNotes()) }
 
-  fun getNotes() = getAllNotesUseCase()
+  fun getNotes() = getAllNotesUseCase().asLiveData()
   suspend fun deleteNote(noteItem: NoteItem) = deleteNoteUseCase(noteItem)
   suspend fun upsertNote(noteItem: NoteItem) = upsertNoteUseCase(noteItem)
 }

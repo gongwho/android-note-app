@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.survivalcoding.noteapp.databinding.FragmentNoteListBinding
+import com.survivalcoding.noteapp.presentation.note.list.adapter.NoteListAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NoteListFragment : Fragment() {
   private var _binding: FragmentNoteListBinding? = null
   private val binding get() = _binding!!
@@ -25,6 +28,15 @@ class NoteListFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
+    val adapter = NoteListAdapter()
+
+    binding.recyclerViewNoteList.adapter = adapter
+
+    viewModel.getNotes().observe(viewLifecycleOwner) {
+      adapter.submitList(it)
+    }
+
     binding.addNoteButton.setOnClickListener {
       // TODO: 2022/01/13 nav to edit fragment
     }

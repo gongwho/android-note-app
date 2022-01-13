@@ -1,9 +1,11 @@
 package com.survivalcoding.noteapp.domain.repository
 
 import com.survivalcoding.noteapp.domain.model.NoteItem
+import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository {
-  fun getNotes(): List<NoteItem>
+
+  fun getNotes(): Flow<List<NoteItem>>
 
   suspend fun getNoteById(id: Int): NoteItem?
 

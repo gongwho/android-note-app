@@ -11,4 +11,5 @@ data class NoteItem(
   val content: String,
   val timestamp: Long = Date().time,
   val color: Int,
+  val isDone: Boolean = false
 )

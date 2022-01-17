@@ -5,10 +5,13 @@ import com.survivalcoding.noteapp.databinding.NoteListItemBinding
 import com.survivalcoding.noteapp.domain.model.NoteItem
 
 class NoteItemViewHolder(private val binding: NoteListItemBinding) : ViewHolder(binding.root) {
-  fun bind(noteItem: NoteItem) {
+  fun bind(noteItem: NoteItem, editNote: (NoteItem) -> Any) {
     with(binding) {
       noteTitle.text = noteItem.title
       noteTimestamp.text = noteItem.timestamp.toString()
+      root.setOnClickListener {
+        editNote(noteItem)
+      }
     }
   }
 }

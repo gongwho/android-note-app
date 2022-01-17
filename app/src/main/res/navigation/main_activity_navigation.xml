@@ -14,7 +14,6 @@
       android:id="@+id/action_edit_note"
       app:destination="@id/noteEditFragment">
       <argument
-        android:defaultValue="@null"
         android:name="note"
         app:argType="com.survivalcoding.noteapp.domain.model.NoteItem"
         app:nullable="true" />
@@ -24,5 +23,11 @@
     android:id="@+id/noteEditFragment"
     android:label="fragment_note_edit"
     android:name="com.survivalcoding.noteapp.presentation.note.edit.NoteEditFragment"
-    tools:layout="@layout/fragment_note_edit" />
+    tools:layout="@layout/fragment_note_edit" >
+    <argument
+      android:defaultValue="@null"
+      android:name="note"
+      app:argType="com.survivalcoding.noteapp.domain.model.NoteItem"
+      app:nullable="true" />
+  </fragment>
 </navigation>

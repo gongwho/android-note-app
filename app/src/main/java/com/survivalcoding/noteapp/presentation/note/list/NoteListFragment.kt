@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.survivalcoding.noteapp.databinding.FragmentNoteListBinding
 import com.survivalcoding.noteapp.presentation.note.list.adapter.NoteListAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +31,10 @@ class NoteListFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    val adapter = NoteListAdapter()
+    val adapter = NoteListAdapter {
+      val action = NoteListFragmentDirections.actionEditNote(it)
+      findNavController().navigate(action)
+    }
 
     binding.recyclerViewNoteList.adapter = adapter
 
@@ -39,7 +43,7 @@ class NoteListFragment : Fragment() {
     }
 
     binding.addNoteButton.setOnClickListener {
-      val action = NoteListFragmentDirections.actionEditNote()
+      val action = NoteListFragmentDirections.actionEditNote(null)
       it.findNavController().navigate(action)
     }
   }

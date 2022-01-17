@@ -7,15 +7,57 @@
   tools:context=".presentation.note.list.NoteListFragment"
   >
 
+  <RadioGroup
+    android:orientation="horizontal"
+    android:id="@+id/radioSortType"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+    <androidx.appcompat.widget.AppCompatRadioButton
+      android:id="@+id/rbTypeTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="title"/>
+    <androidx.appcompat.widget.AppCompatRadioButton
+      android:id="@+id/rbTypeTimestamp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="timestamp"/>
+  </RadioGroup>
+  <RadioGroup
+    android:orientation="horizontal"
+    android:id="@+id/radioSortOrder"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/radioSortType"
+    app:layout_constraintStart_toStartOf="parent">
+    <androidx.appcompat.widget.AppCompatRadioButton
+      android:id="@+id/rbOrderAsc"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Asc"/>
+    <androidx.appcompat.widget.AppCompatRadioButton
+      android:id="@+id/rbOrderDesc"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Desc"/>
+  </RadioGroup>
+
+
   <androidx.recyclerview.widget.RecyclerView
     android:clipChildren="false"
     android:clipToPadding="false"
     android:id="@+id/recyclerViewNoteList"
-    android:layout_height="match_parent"
+    android:layout_height="0dp"
     android:layout_width="match_parent"
     android:paddingTop="8dp"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:listitem="@layout/note_list_item"
+    app:layout_constraintTop_toBottomOf="@id/radioSortOrder"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
     />
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -7,7 +7,8 @@ import com.survivalcoding.noteapp.databinding.NoteListItemBinding
 import com.survivalcoding.noteapp.domain.model.NoteItem
 import com.survivalcoding.noteapp.presentation.note.list.NoteItemViewHolder
 
-class NoteListAdapter : ListAdapter<NoteItem, NoteItemViewHolder>(NoteDiffCallback()) {
+class NoteListAdapter(private val editNote: (NoteItem) -> Any) :
+  ListAdapter<NoteItem, NoteItemViewHolder>(NoteDiffCallback()) {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemViewHolder {
     return NoteItemViewHolder(
       NoteListItemBinding.inflate(
@@ -19,6 +20,6 @@ class NoteListAdapter : ListAdapter<NoteItem, NoteItemViewHolder>(NoteDiffCallba
   }
 
   override fun onBindViewHolder(holder: NoteItemViewHolder, position: Int) {
-    holder.bind(getItem(position))
+    holder.bind(getItem(position), editNote)
   }
 }
